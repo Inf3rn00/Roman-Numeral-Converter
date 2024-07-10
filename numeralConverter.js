@@ -11,17 +11,27 @@ function romanToInt(romanNumeral) {
 
   let result = 0;
   let prevValue = 0;
+  let charCount = {};
 
   for (let char of romanNumeral) {
     const currentValue = romanObj[char];
 
+    if (charCount[char] === undefined) {
+      charCount[char] = 1;
+    } else if (charCount[char] < 3) {
+      charCount[char]++;
+    } else {
+      // Invalid numeral because a character is repeated more than 3 times
+      return " invalid because a character cannot be repeated more than 3 times";
+    }
+
     if (currentValue > prevValue) {
-      result += currentValue - prevValue;
-      prevValue = 0;
+      result += currentValue - 2 * prevValue;
     } else {
       result += currentValue;
-      prevValue = currentValue;
     }
+
+    prevValue = currentValue;
   }
 
   return result;
@@ -29,7 +39,9 @@ function romanToInt(romanNumeral) {
 
 function convertToInt() {
   const formInput = document.getElementById("convert-input");
-  const romanInput = document.getElementById("convert-input").value.toUpperCase();
+  const romanInput = document
+    .getElementById("convert-input")
+    .value.toUpperCase();
   const resultParagraph = document.querySelector(".ans");
   const errorMessage = document.querySelector("#error-text");
 
@@ -41,7 +53,7 @@ function convertToInt() {
   if (romanInput === "") {
     errorMessage.textContent = "Please enter a Roman numeral.";
     resultParagraph.textContent = "";
-    formInput.style.border = "solid 1px red";  
+    formInput.style.border = "solid 1px red";
     return;
   }
 
@@ -57,11 +69,11 @@ function convertToInt() {
 
     resultParagraph.textContent = `The integer value of "${romanInput.toUpperCase()}" is ${integerValue}`;
     errorMessage.textContent = "";
-    formInput.style.border = "";  // Reset border style to normal
+    formInput.style.border = ""; // Reset border style to normal
   } else {
-    errorMessage.textContent = "Invalid Roman numeral. Please use only characters I, V, X, L, C, D, and M.";
+    errorMessage.textContent =
+      "Invalid Roman numeral. Please use only characters I, V, X, L, C, D, and M.";
     resultParagraph.textContent = "";
     formInput.style.border = "solid 1px red";
   }
 }
-
