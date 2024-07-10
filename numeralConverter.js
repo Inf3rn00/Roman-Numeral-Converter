@@ -51,7 +51,7 @@ function convertToInt() {
 
   // Check for empty input and display appropriate message
   if (romanInput === "") {
-    errorMessage.textContent = "Please enter a Roman numeral.";
+    errorMessage.textContent = "Please enter a Roman Numeral.";
     resultParagraph.textContent = "";
     formInput.style.border = "solid 1px red";
     return;
