@@ -55,7 +55,7 @@ input {
   justify-content: center;
   align-items: center;
   width: 100%;
-  
+    text-align: center;
 }
 
 .footer1 {
@@ -74,7 +74,7 @@ input {
 
 h4 {
   color: var(--textColor1);
-  text-align: center;
+
 }
 
 #error-text {
