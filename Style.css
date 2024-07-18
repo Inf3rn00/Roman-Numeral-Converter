@@ -55,6 +55,7 @@ input {
   justify-content: center;
   align-items: center;
   width: 100%;
+  
 }
 
 .footer1 {
@@ -62,14 +63,18 @@ input {
   display: flex;
   align-items: end;
   margin-top: 50px;
+  
+
 }
 
 .footer2 {
   width: 50%;
+  
 }
 
 h4 {
   color: var(--textColor1);
+  text-align: center;
 }
 
 #error-text {
